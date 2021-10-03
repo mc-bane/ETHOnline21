@@ -80,6 +80,10 @@ def get_breed(breed_number):
     switch = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
     return switch[breed_number]
 
+def get_number(breed_number):
+    switch = {0: "EVEN", 1: "ODD" }
+    return switch[breed_number]
+
 
 def fund_with_link(
     contract_address, account=None, link_token=None, amount=1000000000000000000

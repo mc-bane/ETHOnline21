@@ -1,0 +1,12 @@
+{
+    "name": "ODD", 
+    "description": "An adorable ODD pup!",
+    "image": "https://ipfs.io/ipfs/QmTF6EMomSpCaT9HboNnPZPRQe8g3bbw7BPWTspLR4rwRy?filename=83.png", 
+    "attributes": [
+        {
+            "trait_type": "cuteness",
+             "value": 100
+        }
+    ]
+            
+}

@@ -4,6 +4,9 @@ build
 .env
 .DS*
 
+# Image folder
+img/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
