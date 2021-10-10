@@ -11,7 +11,7 @@ def main():
     transaction = number_collectible.createCollectible("None", {"from": dev})
     print("Waiting on second transaction...")
     # wait for the 2nd transaction
-    transaction.wait(10)
+    transaction.wait(2)
     time.sleep(35)
     requestId = transaction.events["requestedCollectible"]["requestId"]
     token_id = number_collectible.requestIdToTokenId(requestId)

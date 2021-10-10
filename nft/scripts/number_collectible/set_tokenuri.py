@@ -4,11 +4,17 @@ from metadata import sample_metadata
 from scripts.helpful_scripts import get_number, OPENSEA_FORMAT
 
 
-dog_metadata_dic = {
-    "ODD": "https://ipfs.io/ipfs/QmZZX8ygx11NkafUYGE7EwXZPeScRdZaViAVLLV1w41bnz?filename=0-83.json",
-    "PUG": "https://ipfs.io/ipfs/Qmd9MCGtdVz2miNumBHDbvj8bigSgTwnr4SbyH6DNnpWdt?filename=0-PUG.json",
-    "SHIBA_INU": "https://ipfs.io/ipfs/QmdryoExpgEQQQgJPoruwGJyZmz6SqV4FRTX1i73CT3iXn?filename=1-SHIBA_INU.json",
-    "ST_BERNARD": "https://ipfs.io/ipfs/QmbBnUjyHHN7Ytq9xDsYF9sucZdDJLRkWz7vnZfrjMXMxs?filename=2-ST_BERNARD.json",
+metadata_dic = {
+    0:"https://ipfs.io/ipfs/QmdobKtyQvJvkiAZwmJzUatvdrfMuTvZBVKupCVvPRnTvS?filename=0-18.json",
+    1: "https://ipfs.io/ipfs/QmS7i14fhUcpeDhu4vLTRN41NcRyF4CKjryEtWEZQBdJ8L?filename=1-6.json",
+    2: "https://ipfs.io/ipfs/QmUYQQ4M3XX8jTU54ek5PhyHQnQ2QKGhDz99yMBRSjYMus?filename=2-64.json",
+    3: "https://ipfs.io/ipfs/QmTU5wR1Gx9VunYef8kqRDBpZoajBxqbyGhyDcrvJvmVWU?filename=3-71.json",
+    4: "https://ipfs.io/ipfs/QmS8tUut8gAYtskMCtueLbjPyGgtL4tJgibtj5K5LEAGJ3?filename=4-66.json",
+    5: "https://ipfs.io/ipfs/QmePLx6TbF4tBGRhkMKmCoktfJ1keuCATtU2SiVoTRmAqF?filename=5-91.json",
+    6: "https://ipfs.io/ipfs/QmRLMCRTjoDgDnwEFEwTm8VSM6tVJfs34dyLRos265uMmu?filename=6-56.json",
+    7: "https://ipfs.io/ipfs/QmTU5wR1Gx9VunYef8kqRDBpZoajBxqbyGhyDcrvJvmVWU?filename=7-71.json",
+    8: "https://ipfs.io/ipfs/QmRYBd391sF4ab2kiU6vwAMeHrSqW9BQCZp1b7mUp94c55?filename=8-31.json",
+    9: "https://ipfs.io/ipfs/QmRU8D81wzHPNANiBXJVsFM3VwDX9gdCGJcSMeFN8c99Bz?filename=9-29.json"
 }
 
 def main():
@@ -20,13 +26,16 @@ def main():
         + str(number_of_number_collectibles)
     )
     for token_id in range(number_of_number_collectibles):
-        breed = get_number(number_collectible.tokenIdTooddOrEven(token_id))
+
+        #breed = get_number(number_collectible.tokenIdTooddOrEven(token_id))
         if not number_collectible.tokenURI(token_id).startswith("https://"):
             print("Setting tokenURI of {}".format(token_id))
             set_tokenURI(token_id, number_collectible,
-                            dog_metadata_dic[breed])
+                            metadata_dic[token_id])
         else:
             print("Skipping {}, we already set that tokenURI!".format(token_id))
+            set_tokenURI(token_id, number_collectible,
+                            metadata_dic[token_id])
 
 
 def set_tokenURI(token_id, nft_contract, tokenURI):

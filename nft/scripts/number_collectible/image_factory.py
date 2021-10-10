@@ -4,7 +4,6 @@ import numpy as np
 from scipy import misc
 import matplotlib.pyplot as plt
 
-import imageio
  
 m = 480
 
@@ -18,7 +17,10 @@ def factory(num):
     Z = np.tile(x, (n, 1)) + 1j * np.tile(y, (1, m))
     
     #C = np.full((n, m), -.49 + 0.64j)
-    C = np.full((n, m), -num/100 + num/100j)
+    if num < 50:
+        C = np.full((n, m), -(num/2*num)/100 + num/100j)
+    else:
+        C = np.full((n, m), -(num)/100 + (num-49)/100j)
     M = np.full((n, m), True, dtype=bool)
     N = np.zeros((n, m))
     for i in range(256):
@@ -33,8 +35,24 @@ def factory(num):
     ax = fig.add_axes([0, 0, 1, 1], frameon=False, aspect=1)
     ax.set_xticks([])
     ax.set_yticks([])
-    plt.imshow(np.flipud(N), cmap='hot')
+
+    if num % 10 ==0:
+        col = 'hsv'
+    elif num % 13 == 0:
+        col = 'Accent'
+    elif num % 2 == 0:
+        col = 'flag'
+    else:
+        col = 'hot'
+    plt.imshow(np.flipud(N), cmap=col)
+    #plt.savefig('nft/img/' + str(num) + '.png')
     plt.savefig('img/' + str(num) + '.png')
     plt.close()
 
-#factory(12)
+"""factory(2)
+factory(12)
+factory(13)
+factory(51)
+factory(82)
+factory(80)
+factory(99)"""
